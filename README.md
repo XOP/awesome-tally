@@ -1,1 +1,1 @@
-# awesome-tally
+# Awesome Tally App
