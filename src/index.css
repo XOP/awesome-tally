@@ -20,7 +20,7 @@ body {
   font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: var(--font-size-n);
-  line-height: 1.6;
+  line-height: var(--line-height-n);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

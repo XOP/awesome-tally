@@ -1,3 +1,30 @@
 .root {
   text-align: center;
 }
+
+
+:export {
+  spaceEight: var(--space-eighth);
+  spaceQuarter: var(--space-quarter);
+  spaceHalf: var(--space-quarter);
+  spaceThreeQuarters: 0.75rem;
+  spaceOne: var(--space-one);
+  spaceOneAndHalf: 1.5rem;
+  spaceTwo: 2rem;
+  spaceThree: 3rem;
+  spaceFour: 4rem;
+
+  fontSizeS: 0.7rem;
+  fontSizeM: 0.85rem;
+  fontSizeN: 1rem;
+  fontSizeL: 1.15rem;
+  fontSizeXl: 1.25rem;
+  fontSize2xl: 1.4rem;
+  fontSize3xl: 1.8rem;
+
+  lineHeightN: 1.6;
+
+  radiusLight: 0.125rem;
+  radiusRegular: 0.25rem;
+  radiusHeavy: 0.5rem;
+}

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import App from "./App";
 
-import "./theme/theme.css";
+import "./theme/theme.module.css";
 import "@csstools/normalize.css";
 import "./index.css";
 
