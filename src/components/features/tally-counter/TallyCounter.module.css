@@ -1,0 +1,25 @@
+.root {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  display: flex;
+
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.minus {
+  flex: 0 0 auto;
+}
+
+.plus {
+  flex: 0 0 auto;
+}
+
+.number {
+  flex: 0 0 auto;
+  margin: 0 var(--space-one);
+}

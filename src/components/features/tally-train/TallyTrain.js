@@ -1,8 +1,10 @@
-import clsx from 'clsx';
+import clsx from "clsx";
+
 import { Card, Number } from "../../shared";
+
 import styles from "./TallyTrain.module.css";
 
-const TallyTrain = ({ items, goal }) => {
+const TallyTrain = ({ items, goal = 0 }) => {
   if (!items ?? !items.length) return null;
 
   const total = items.reduce((acc, cur) => {
@@ -13,39 +15,50 @@ const TallyTrain = ({ items, goal }) => {
   const isExtra = extra > 0;
   const isUnder = extra < 0;
 
+  const showExtras = goal > 0;
+
   return (
     <div className={styles.root}>
       <Card padding="0">
         <div className={styles.container}>
-          {total && goal && 
-          <section className={styles.summary}>
-            <div className={clsx(styles.goal, {
-              [styles['goal--done']] : isExtra
-            })}>{goal}</div>
-            <div className={clsx(styles.total, {
-              [styles['goal--done']]: isExtra,
-              [styles['goal--under']]: isUnder,
-            })}>{total}</div>
+          {showExtras && total && (
+            <section className={styles.summary}>
+              <div
+                className={clsx(styles.goal, {
+                  [styles["goal--done"]]: isExtra,
+                })}
+              >
+                {goal}
+              </div>
+              <div
+                className={clsx(styles.total, {
+                  [styles["goal--done"]]: isExtra,
+                  [styles["goal--under"]]: isUnder,
+                })}
+              >
+                {total}
+              </div>
             </section>
-            }
+          )}
 
           <section className={styles.items}>
-          {
-            items.map((item, i) => {
-              return (
-                <Number className={styles.unit} key={i}>{item.value}</Number>
-              )
-            })
-          }
+            <div className={styles.grid}>
+              {items.map((item, i) => {
+                return (
+                  <Number className={styles.unit} key={i}>
+                    {item.value}
+                  </Number>
+                );
+              })}
+            </div>
           </section>
         </div>
       </Card>
-      {
-        isExtra &&
+      {showExtras && isExtra && (
         <Card className={styles.extra} padding="0.5">
           {`+ ${extra}`}
         </Card>
-      }
+      )}
     </div>
   );
 };

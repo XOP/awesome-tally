@@ -33,13 +33,16 @@ body {
   flex-direction: column;
 
   height: 100vh;
-  padding: var(--space-two);
+  width: 100%;
+  padding: var(--space-two) var(--space-one);
+  overflow: hidden;
+  overflow-y: auto;
 
   background: #222;
   color: #ededed;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 980px) {
   #root {
     width: 60vw;
     height: 80vh;

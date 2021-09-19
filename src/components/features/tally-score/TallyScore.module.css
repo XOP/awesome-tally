@@ -1,0 +1,56 @@
+.root {
+  
+}
+
+.container {
+  position: relative;
+}
+
+.score {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 auto;
+}
+
+.total {
+
+}
+
+.divider {
+  flex: 0 0 auto;
+  margin: 0 var(--space-one);
+
+  font-size: var(--font-size-xl);
+  opacity: .5;
+}
+
+.goal {
+  
+}
+
+.counter {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: calc(-1 * (var(--space-half) + 0.5ch));
+}
+
+.up {
+  
+}
+
+.down {
+  margin-top: var(--space-one);
+}
+
+
+.message {
+  margin-top: var(--space-quarter);
+
+  font-size: var(--font-size-l);
+  text-align: center;
+}

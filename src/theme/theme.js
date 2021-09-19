@@ -42,6 +42,7 @@ const defaultTheme = {
   fontSize3xl: theme.fontSize3xl,
   fontSize4xl: theme.fontSize4xl,
   lineHeightN: theme.lineHeightN,
+  lineHeightS: theme.lineHeightS,
   radiusLight: theme.radiusLight,
   radiusRegular: theme.radiusRegular,
   radiusHeavy: theme.radiusHeavy,
@@ -51,3 +52,11 @@ const defaultTheme = {
 };
 
 export default defaultTheme;
+
+export const MAP_SPACE = {
+  '0': 0,
+  '0.5': theme.spaceHalf,
+  '1': theme.spaceOne,
+  '1.5': theme.spaceOneAndHalf,
+  '2': theme.spaceTwo,
+};

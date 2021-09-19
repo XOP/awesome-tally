@@ -10,8 +10,29 @@ const Button = ({
   type = "button",
   iconStart = null,
   iconEnd = null,
+  size = "regular",
+  isIcon = false
 }) => {
-  const btn = '#5d9ec9';
+  const btn = "#5d9ec9";
+
+  let paddingY = theme.spaceOne;
+  let paddingX = theme.spaceOneAndHalf;
+  let fontSize = theme.fontSizeN;
+
+  if (size === 'small') {
+    paddingY = theme.spaceHalf;
+    paddingX = theme.spaceThreeQuarters;
+  }
+
+  if (size === 'big') {
+    fontSize = theme.fontSizeL;
+    paddingY = theme.spaceOneAndHalf;
+    paddingX = theme.spaceTwo;
+  }
+
+  if (isIcon) {
+    paddingX = paddingY;
+  }
 
   return (
     <button
@@ -19,8 +40,10 @@ const Button = ({
       css={css`
         appearance: none;
 
-        height: calc(${theme.spaceOne} * 2 + ${theme.fontSizeN} * ${theme.lineHeightN});
-        padding: ${theme.spaceOne} ${theme.spaceOneAndHalf};
+        height: calc(
+          ${paddingY} * 2 + ${fontSize} * ${theme.lineHeightN}
+        );
+        padding: ${paddingY} ${paddingX};
 
         border: 1px solid ${theme.colorLightTemp};
         border-radius: ${theme.radiusRegular};
@@ -29,7 +52,7 @@ const Button = ({
         color: ${theme.colorDarkTemp};
 
         text-transform: uppercase;
-        font-size: ${theme.fontSizeN};
+        font-size: ${fontSize};
         line-height: ${theme.lineHeightN};
 
         cursor: pointer;

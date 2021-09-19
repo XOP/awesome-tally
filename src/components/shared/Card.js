@@ -1,15 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
-import theme from "../../theme/theme";
-
-const MAP_SPACE = {
-  '0': 0,
-  '0.5': theme.spaceHalf,
-  '1': theme.spaceOne,
-  '1.5': theme.spaceOneAndHalf,
-  '2': theme.spaceTwo,
-};
+import theme, { MAP_SPACE } from "../../theme/theme";
 
 const Card = ({ className, children, align = "left", padding = '2' }) => {
   const space = MAP_SPACE[String(padding)];

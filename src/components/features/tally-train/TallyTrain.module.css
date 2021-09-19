@@ -1,23 +1,25 @@
 .root {
   position: relative;
+
+  margin: 0 var(--space-one);
 }
 
 .root + .root {
-  margin-top: var(--space-two);
+  margin-top: var(--space-three);
 }
 
 .container {
   display: flex;
   flex-direction: row;
-  padding: var(--space-one-and-half);
+  padding: var(--space-one);
 }
 
 .summary {
   flex: 0 0 6rem;
 
-  margin: calc( -1 * var(--space-one-and-half));
-  margin-right: var(--space-one-and-half);
-  padding: var(--space-one-and-half);
+  margin: calc( -1 * var(--space-one));
+  margin-right: var(--space-one);
+  padding: var(--space-one);
 
   border-right: 1px solid var(--color-dark-temp);
 
@@ -43,21 +45,56 @@
 }
 
 .items {
-  flex: 1 1 auto;
+  flex: 1 0 auto;
+  width: 0;
 }
 
-.unit {
-  margin-left: var(--space-one);
+.grid {
+  display: grid;
+  gap: var(--space-one); 
+  grid-template-columns: repeat(3, 1fr);
+
+  width: 100%;
+  overflow: auto;
 }
 
-.unit:first-of-type {
-  margin-left: 0;
+@media screen and (min-width: 460px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 560px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media screen and (min-width: 980px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 1160px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }
 
 .extra {
   position: absolute;
   left: 100%;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+
+  margin-left: calc(-1 * (var(--space-half) + 2ch));
+  margin-top: calc(-1 * (var(--space-half) + var(--font-size-n)));
+
   white-space: nowrap;
 }

@@ -1,13 +1,16 @@
 // import { Route, Link } from "react-router-dom";
 
-import { Card, Button, Number } from "../components/shared";
+import { Heading } from "../components/shared";
 
 import { TallyTrain } from "../components/features/tally-train/TallyTrain";
+import { TallyAdd } from "../components/features/tally-add/TallyAdd";
 
 const MainPage = () => {
   return (
-    <div>
-      <h2>Tally Records</h2>
+    <main>
+      <Heading level="1" mb="2">
+        Tally Records
+      </Heading>
 
       <TallyTrain
         goal={110}
@@ -18,7 +21,9 @@ const MainPage = () => {
         goal={110}
         items={[{ value: 30 }, { value: 30 }, { value: 35 }, { value: 30 }]}
       />
-    </div>
+
+      <TallyAdd />
+    </main>
   );
 };
 
