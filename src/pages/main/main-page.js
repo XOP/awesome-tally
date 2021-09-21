@@ -1,9 +1,7 @@
-// import { Route, Link } from "react-router-dom";
+import { Heading } from "../../components/shared";
 
-import { Heading } from "../components/shared";
-
-import { TallyTrain } from "../components/features/tally-train/TallyTrain";
-import { TallyAdd } from "../components/features/tally-add/TallyAdd";
+import { TallyTrain } from "../../components/features/tally-train/TallyTrain";
+import { TallyAdd } from "../../components/features/tally-add/TallyAdd";
 
 const MainPage = () => {
   return (

@@ -1,4 +1,4 @@
-import MainPage from "../pages/main-page";
+import MainPage from "../pages/main/main-page";
 import TallyPage from "../pages/tally-page";
 
 const routeNames = {
