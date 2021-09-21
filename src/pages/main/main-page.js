@@ -1,7 +1,8 @@
 import { Heading } from "../../components/shared";
 
 import { TallyTrain } from "../../components/features/tally-train/TallyTrain";
-import { TallyAdd } from "../../components/features/tally-add/TallyAdd";
+
+import  TallyCreate from "./components/tally-create";
 
 const MainPage = () => {
   return (
@@ -20,7 +21,7 @@ const MainPage = () => {
         items={[{ value: 30 }, { value: 30 }, { value: 35 }, { value: 30 }]}
       />
 
-      <TallyAdd />
+      <TallyCreate />
     </main>
   );
 };

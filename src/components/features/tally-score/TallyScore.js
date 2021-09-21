@@ -5,7 +5,7 @@ import { Card, Number, Button, Icons } from "../../shared";
 import styles from "./TallyScore.module.css";
 
 const TallyScore = ({ goal, total, onPlusClick, onMinusClick }) => {
-  const message = "12 more to the goal!";
+  const message = "";
 
   return (
     <div className={styles.root}>

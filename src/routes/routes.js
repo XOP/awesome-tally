@@ -1,5 +1,5 @@
-import MainPage from "../pages/main/main-page";
-import TallyPage from "../pages/tally-page";
+import MainPage from "../pages/main";
+import TallyPage from "../pages/tally";
 
 const routeNames = {
   'MAIN': '/',

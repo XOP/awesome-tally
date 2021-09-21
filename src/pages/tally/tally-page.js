@@ -1,9 +1,10 @@
-import { Heading } from "../components/shared";
+import { Heading } from "../../components/shared";
 
-import { TallyCounter } from "../components/features/tally-counter/TallyCounter";
-import { TallyTrain } from "../components/features/tally-train/TallyTrain";
-import { TallyScore } from "../components/features/tally-score/TallyScore";
-import { TallyControls } from "../components/features/tally-controls/TallyControls";
+import { TallyCounter } from "../../components/features/tally-counter/TallyCounter";
+import { TallyTrain } from "../../components/features/tally-train/TallyTrain";
+import { TallyControls } from "../../components/features/tally-controls/TallyControls";
+
+import TallyScoreModule from "./components/tally-score";
 
 const TallyPage = () => {
   return (
@@ -12,12 +13,7 @@ const TallyPage = () => {
         New Tally
       </Heading>
 
-      <TallyScore
-        goal={120}
-        total={60}
-        onMinusClick={() => null}
-        onPlusClick={() => null}
-      />
+      <TallyScoreModule />
 
       <TallyTrain
         items={[
