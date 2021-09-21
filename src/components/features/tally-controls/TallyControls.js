@@ -2,7 +2,7 @@
 
 import { useHistory } from "react-router-dom";
 import { routeNames } from "../../../routes/routes";
-import { Card, Button, Icons } from "../../shared";
+import { Button, Icons, Panel } from "../../shared";
 
 import styles from "./TallyControls.module.css";
 
@@ -15,27 +15,25 @@ const TallyControls = ({ onDone, onReset, onBack = () => null }) => {
   };
 
   return (
-    <div className={styles.root}>
-      <Card padding="1">
-        <div className={styles.container}>
-          <div className={styles.control}>
-            <Button onClick={onReset} isIcon>
-              <Icons.RefreshCcw />
-            </Button>
-          </div>
-          <div className={styles.control}>
-            <Button onClick={onDone} iconStart={<Icons.Check />}>
-              Done
-            </Button>
-          </div>
-          <div className={styles.control}>
-            <Button onClick={handleBack} isIcon>
-              <Icons.ArrowLeft />
-            </Button>
-          </div>
+    <Panel>
+      <div className={styles.container}>
+        <div className={styles.control}>
+          <Button onClick={onReset} isIcon>
+            <Icons.RefreshCcw />
+          </Button>
         </div>
-      </Card>
-    </div>
+        <div className={styles.control}>
+          <Button onClick={onDone} iconStart={<Icons.Check />}>
+            Done
+          </Button>
+        </div>
+        <div className={styles.control}>
+          <Button onClick={handleBack} isIcon>
+            <Icons.ArrowLeft />
+          </Button>
+        </div>
+      </div>
+    </Panel>
   );
 };
 

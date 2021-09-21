@@ -3,3 +3,4 @@ export { Card } from './Card';
 export * as Icons from './Icon';
 export { Number } from './Number';
 export { Heading } from './Heading';
+export { Panel } from './Panel';
