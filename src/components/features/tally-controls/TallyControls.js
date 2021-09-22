@@ -9,9 +9,16 @@ import styles from "./TallyControls.module.css";
 const TallyControls = ({ onDone, onReset, onBack = () => null }) => {
   const history = useHistory();
 
+  const navigateToMain = () => history.push(routeNames.MAIN);
+
   const handleBack = () => {
     onBack();
-    history.push(routeNames.MAIN);
+    navigateToMain();
+  };
+
+  const handleDone = () => {
+    onDone();
+    navigateToMain();
   };
 
   return (
@@ -23,7 +30,7 @@ const TallyControls = ({ onDone, onReset, onBack = () => null }) => {
           </Button>
         </div>
         <div className={styles.control}>
-          <Button onClick={onDone} iconStart={<Icons.Check />}>
+          <Button onClick={handleDone} iconStart={<Icons.Check />}>
             Done
           </Button>
         </div>

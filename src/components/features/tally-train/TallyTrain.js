@@ -5,7 +5,8 @@ import { Card, Number } from "../../shared";
 import styles from "./TallyTrain.module.css";
 
 const TallyTrain = ({ items, goal = 0 }) => {
-  if (!items ?? !items.length) return null;
+  if (!items) return null;
+  if (!items.length) return null;
 
   const total = items.reduce((acc, cur) => {
     return acc + cur.value;

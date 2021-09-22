@@ -76,6 +76,6 @@ export const revert = () => {
   };
 }
 
-export const tallyGoal = state => state.global.tallyGoal;
+export const tallyGoalSelector = state => state.global.tallyGoal;
 
 export default reducer;

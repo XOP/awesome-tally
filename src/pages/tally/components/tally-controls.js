@@ -1,13 +1,16 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { TallyControls } from "../../../components/features/tally-controls/TallyControls";
 
-import { revert } from "../../../redux/modules/tally-global";
+import { revert, tallyGoalSelector } from "../../../redux/modules/tally-global";
+import { createTrain } from "../../../redux/modules/tally-trains";
 
 const TallyControlsModule = () => {
   const dispatch = useDispatch();
 
-  const handleDone = () => null;
+  const goal = useSelector(tallyGoalSelector);
+
+  const handleDone = () => dispatch(createTrain(goal))
   const handleReset = () => null;
   const handleBack = () => dispatch(revert());
 

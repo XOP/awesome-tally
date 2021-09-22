@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { TallyScore } from "../../../components/features/tally-score/TallyScore";
 
-import { increase, decrease, tallyGoal } from "../../../redux/modules/tally-global";
+import { increase, decrease, tallyGoalSelector } from "../../../redux/modules/tally-global";
 
 const TallyScoreModule = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const TallyScoreModule = () => {
   const handleIncrease = () => dispatch(increase(1));
   const handleDecrease = () => dispatch(decrease(1));
 
-  const goal = useSelector(tallyGoal);
+  const goal = useSelector(tallyGoalSelector);
 
   return (
     <TallyScore 

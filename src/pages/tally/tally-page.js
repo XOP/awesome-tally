@@ -1,10 +1,8 @@
 import { Heading } from "../../components/shared";
 
-import { TallyCounter } from "../../components/features/tally-counter/TallyCounter";
-import { TallyTrain } from "../../components/features/tally-train/TallyTrain";
-
 import TallyScore from "./components/tally-score";
 import TallyControls from "./components/tally-controls";
+import TallyCreate from "./components/tally-create";
 
 const TallyPage = () => {
   return (
@@ -15,24 +13,7 @@ const TallyPage = () => {
         </Heading>
 
         <TallyScore />
-
-        <TallyTrain
-          items={[
-            { value: 30 },
-            { value: 20 },
-            { value: 30 },
-            { value: 20 },
-            { value: 30 },
-            { value: 20 },
-          ]}
-        />
-
-        <TallyCounter
-          value={25}
-          onMinusClick={() => null}
-          onPlusClick={() => null}
-          onNumberClick={() => null}
-        />
+        <TallyCreate />
       </div>
 
       <TallyControls />

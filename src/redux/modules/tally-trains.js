@@ -1,36 +1,65 @@
 import { createSelector } from "reselect";
 
 import { Train } from "../models/tally-train-model";
+import { TrainItem } from "../models/tally-item-model";
 
-const CREATE = "tally/trains/CREATE";
+const CREATE_TRAIN = "tally/trains/CREATE_TRAIN";
+const PUSH_ITEM = "tally/trains/PUSH_ITEM";
 
 const initialState = {
   items: [],
-  newItem: new Train(),
+  newTrain: new Train(),
 };
 
 const reducer = (state = initialState, action = {}) => {
-  if (action.type === CREATE) {
-    const { items } = state;
+  if (action.type === CREATE_TRAIN) {
+    const { items, newTrain } = state;
 
     return {
-      items: [action.payload, ...items],
+      items: [{ ...newTrain, goal: action.payload.goal }, ...items],
+      newTrain: new Train(),
+    };
+  }
+
+  if (action.type === PUSH_ITEM) {
+    const { items, newTrain } = state;
+    const { items: trainItems } = newTrain;
+
+    return {
+      items,
+      newTrain: { ...newTrain, items: [...trainItems, action.payload] },
     };
   }
 
   return state;
 };
 
-export const create = ({ goal, items }) => {
+export const createTrain = (goal) => {
   return {
-    type: CREATE,
-    payload: new Train(goal, items),
+    type: CREATE_TRAIN,
+    payload: {
+      goal,
+    },
   };
 };
 
+export const pushItem = (value) => {
+  return {
+    type: PUSH_ITEM,
+    payload: new TrainItem(value),
+  };
+};
+
+const rootSelector = (state) => state.trains;
+
 export const trainsSelector = createSelector(
-  (state) => state.trains,
+  rootSelector,
   (trains) => trains.items
+);
+
+export const trainItemsSelector = createSelector(
+  rootSelector,
+  (trains) => trains.newTrain.items
 );
 
 export default reducer;
