@@ -1,7 +1,7 @@
-// import clsx from "clsx";
-
 import { useHistory } from "react-router-dom";
+
 import { routeNames } from "../../../routes/routes";
+
 import { Button, Icons, Panel } from "../../shared";
 
 import styles from "./TallyControls.module.css";

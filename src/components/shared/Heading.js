@@ -15,6 +15,7 @@ const MAP_HEADING_FONTSIZE = {
 const Heading = ({
   className,
   children,
+  align = "center",
   as = null,
   level = "2",
   mb = "0",
@@ -44,6 +45,7 @@ const Heading = ({
                 font-size: ${fontSize};
                 line-height: ${theme.lineHeightS};
                 text-transform: uppercase;
+                text-align: ${align};
               `
             ),
           },
