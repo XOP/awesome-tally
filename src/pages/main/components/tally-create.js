@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { TallyAdd } from '../../../components/features/tally-add/TallyAdd';
 import { grow } from "../../../redux/modules/tally-global";
 
-const TallyCreate = () => {
+const TallyCreateModule = () => {
   const dispatch = useDispatch();
 
   const handleNew = () => {
@@ -15,4 +15,4 @@ const TallyCreate = () => {
   );
 };
 
-export default TallyCreate;
+export default TallyCreateModule;

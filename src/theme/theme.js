@@ -55,8 +55,12 @@ export default defaultTheme;
 
 export const MAP_SPACE = {
   '0': 0,
+  '0.25': theme.spaceQuarter,
   '0.5': theme.spaceHalf,
+  '0.75': theme.spaceThreeQuarters,
   '1': theme.spaceOne,
   '1.5': theme.spaceOneAndHalf,
   '2': theme.spaceTwo,
+  '3': theme.spaceThree,
+  '4': theme.spaceFour,
 };

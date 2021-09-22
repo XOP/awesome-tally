@@ -1,7 +1,11 @@
 .root {
   position: relative;
+}
 
-  margin: 0 var(--space-one);
+.card {
+  position: relative;
+
+  z-index: 100;
 }
 
 .root + .root {
@@ -15,7 +19,7 @@
 }
 
 .summary {
-  flex: 0 0 6rem;
+  flex: 0 0 5rem;
 
   margin: calc( -1 * var(--space-one));
   margin-right: var(--space-one);
@@ -90,11 +94,13 @@
 
 .extra {
   position: absolute;
-  left: 100%;
-  top: 0;
+  right: 0;
+  bottom: 100%;
+
+  z-index: 0;
 
   margin-left: calc(-1 * (var(--space-half) + 2ch));
-  margin-top: calc(-1 * (var(--space-half) + var(--font-size-n)));
+  margin-bottom: calc(-1 * var(--space-quarter));
 
   white-space: nowrap;
 }

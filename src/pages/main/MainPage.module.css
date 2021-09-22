@@ -1,0 +1,8 @@
+.root {
+  padding-bottom: 6.5rem;
+}
+
+.main {
+  overflow: hidden;
+  overflow-y: auto;
+}

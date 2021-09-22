@@ -19,7 +19,7 @@ const TallyTrain = ({ items, goal = 0 }) => {
 
   return (
     <div className={styles.root}>
-      <Card padding="0">
+      <Card padding="0" className={styles.card}>
         <div className={styles.container}>
           {showExtras && total && (
             <section className={styles.summary}>
@@ -55,7 +55,7 @@ const TallyTrain = ({ items, goal = 0 }) => {
         </div>
       </Card>
       {showExtras && isExtra && (
-        <Card className={styles.extra} padding="0.5">
+        <Card className={styles.extra} padding="0.25">
           {`+ ${extra}`}
         </Card>
       )}

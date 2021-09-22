@@ -9,7 +9,7 @@ import TallyScoreModule from "./components/tally-score";
 const TallyPage = () => {
   return (
     <main>
-      <Heading level="2" mb="1">
+      <Heading level="2" mb="2">
         New Tally
       </Heading>
 

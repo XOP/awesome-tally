@@ -1,12 +1,12 @@
 const INCREASE = 'tally/goal/INCREASE';
 const DECREASE = 'tally/goal/DECREASE';
-
 const GROW = 'tally/goal/GROW';
+const REVERT = 'tally/goal/REVERT';
 
 const initialState = {
-  tallyGoal: 100,
-  tallyGoalPrev: 100,
-  tallyIncrement: 1
+  tallyGoal: 0,
+  tallyGoalPrev: 0,
+  tallyIncrement: 0
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -38,6 +38,15 @@ const reducer = (state = initialState, action = {}) => {
     }
   }
 
+  if (action.type === REVERT) {
+    const { tallyGoalPrev: prev } = state;
+
+    return {
+      ...state,
+      tallyGoal: prev
+    }
+  }
+
   return state;
 }
 
@@ -58,6 +67,12 @@ export const decrease = (value) => {
 export const grow = () => {
   return {
     type: GROW
+  };
+}
+
+export const revert = () => {
+  return {
+    type: REVERT
   };
 }
 
