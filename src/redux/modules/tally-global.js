@@ -1,9 +1,9 @@
 import { createSelector } from "reselect";
 
-const INCREASE = "tally/global/INCREASE";
-const DECREASE = "tally/global/DECREASE";
-const GROW = "tally/global/GROW";
-const REVERT = "tally/global/REVERT";
+const INCREASE_GOAL = "tally/global/INCREASE_GOAL";
+const DECREASE_GOAL = "tally/global/DECREASE_GOAL";
+const GROW_GOAL = "tally/global/GROW_GOAL";
+const REVERT_GOAL = "tally/global/REVERT_GOAL";
 
 const OPEN_MENU = "tally/global/OPEN_MENU";
 const CLOSE_MENU = "tally/global/CLOSE_MENU";
@@ -20,7 +20,7 @@ const initialState = {
 // ========================================================
 
 const reducer = (state = initialState, action = {}) => {
-  if (action.type === INCREASE) {
+  if (action.type === INCREASE_GOAL) {
     const { tallyGoal: goal } = state;
 
     return {
@@ -29,7 +29,7 @@ const reducer = (state = initialState, action = {}) => {
     };
   }
 
-  if (action.type === DECREASE) {
+  if (action.type === DECREASE_GOAL) {
     const { tallyGoal: goal } = state;
 
     return {
@@ -38,7 +38,7 @@ const reducer = (state = initialState, action = {}) => {
     };
   }
 
-  if (action.type === GROW) {
+  if (action.type === GROW_GOAL) {
     const { tallyGoal: goal, tallyIncrement: bump } = state;
 
     return {
@@ -48,7 +48,7 @@ const reducer = (state = initialState, action = {}) => {
     };
   }
 
-  if (action.type === REVERT) {
+  if (action.type === REVERT_GOAL) {
     const { tallyGoalPrev: prev } = state;
 
     return {
@@ -78,29 +78,29 @@ const reducer = (state = initialState, action = {}) => {
 // actions
 // ========================================================
 
-export const increase = (value) => {
+export const increaseGoal = (value) => {
   return {
-    type: INCREASE,
+    type: INCREASE_GOAL,
     payload: value,
   };
 };
 
-export const decrease = (value) => {
+export const decreaseGoal = (value) => {
   return {
-    type: DECREASE,
+    type: DECREASE_GOAL,
     payload: value,
   };
 };
 
-export const grow = () => {
+export const growGoal = () => {
   return {
-    type: GROW,
+    type: GROW_GOAL,
   };
 };
 
-export const revert = () => {
+export const revertGoal = () => {
   return {
-    type: REVERT,
+    type: REVERT_GOAL,
   };
 };
 
@@ -124,12 +124,12 @@ const rootSelector = (state) => state.global;
 
 export const tallyGoalSelector = createSelector(
   rootSelector,
-  state => state.tallyGoal
+  (state) => state.tallyGoal
 );
 
 export const menuOpenedSelector = createSelector(
   rootSelector,
-  state => state.menuOpened
+  (state) => state.menuOpened
 );
 
 export default reducer;
