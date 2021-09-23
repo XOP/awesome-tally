@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TallyControls } from "../../../components/features/tally-controls/TallyControls";
 
 import { revert, tallyGoalSelector } from "../../../redux/modules/tally-global";
-import { createTrain, trainTotalSelector } from "../../../redux/modules/tally-trains";
+import { createTrain, resetTrain, trainTotalSelector } from "../../../redux/modules/tally-trains";
 
 const TallyControlsModule = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const TallyControlsModule = () => {
   const isControlDisabled = total === 0;
 
   const handleDone = () => dispatch(createTrain(goal))
-  const handleReset = () => null;
+  const handleReset = () => dispatch(resetTrain());
   const handleBack = () => dispatch(revert());
 
   return (
