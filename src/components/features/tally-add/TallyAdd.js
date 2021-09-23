@@ -7,7 +7,7 @@ import { Panel, Button, Icons } from "../../shared";
 
 import styles from "./TallyAdd.module.css";
 
-const TallyAdd = ({ onNew = () => null }) => {
+const TallyAdd = ({ onMenu, onNew = () => null }) => {
   const history = useHistory();
 
   const handleNew = () => {
@@ -18,6 +18,11 @@ const TallyAdd = ({ onNew = () => null }) => {
   return (
     <Panel>
       <div className={styles.container}>
+        <div className={styles.control}>
+          <Button onClick={onMenu} isIcon>
+            <Icons.Settings />
+          </Button>
+        </div>
         <div className={styles.control}>
           <Button onClick={handleNew} iconStart={<Icons.Star />}>
             New

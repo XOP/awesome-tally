@@ -8,7 +8,10 @@ const configureStore = (state = {}) =>
   createStore(
     reducer,
     {
-      ...state,
+      global: {
+        ...state.global,
+        menuOpened: false
+      },
       trains: {
         ...state.trains,
         newTrain: new Train(),

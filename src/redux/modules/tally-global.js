@@ -1,13 +1,23 @@
-const INCREASE = 'tally/goal/INCREASE';
-const DECREASE = 'tally/goal/DECREASE';
-const GROW = 'tally/goal/GROW';
-const REVERT = 'tally/goal/REVERT';
+import { createSelector } from "reselect";
+
+const INCREASE = "tally/global/INCREASE";
+const DECREASE = "tally/global/DECREASE";
+const GROW = "tally/global/GROW";
+const REVERT = "tally/global/REVERT";
+
+const OPEN_MENU = "tally/global/OPEN_MENU";
+const CLOSE_MENU = "tally/global/CLOSE_MENU";
 
 const initialState = {
   tallyGoal: 0,
   tallyGoalPrev: 0,
-  tallyIncrement: 0
+  tallyIncrement: 0,
+  menuOpened: false,
 };
+
+//========================================================
+// reducer
+// ========================================================
 
 const reducer = (state = initialState, action = {}) => {
   if (action.type === INCREASE) {
@@ -15,8 +25,8 @@ const reducer = (state = initialState, action = {}) => {
 
     return {
       ...state,
-      tallyGoal: goal + action.payload
-    }
+      tallyGoal: goal + action.payload,
+    };
   }
 
   if (action.type === DECREASE) {
@@ -24,8 +34,8 @@ const reducer = (state = initialState, action = {}) => {
 
     return {
       ...state,
-      tallyGoal: goal - action.payload
-    }
+      tallyGoal: goal - action.payload,
+    };
   }
 
   if (action.type === GROW) {
@@ -34,8 +44,8 @@ const reducer = (state = initialState, action = {}) => {
     return {
       ...state,
       tallyGoalPrev: goal,
-      tallyGoal: goal + bump
-    }
+      tallyGoal: goal + bump,
+    };
   }
 
   if (action.type === REVERT) {
@@ -43,39 +53,83 @@ const reducer = (state = initialState, action = {}) => {
 
     return {
       ...state,
-      tallyGoal: prev
-    }
+      tallyGoal: prev,
+    };
+  }
+
+  if (action.type === OPEN_MENU) {
+    return {
+      ...state,
+      menuOpened: true,
+    };
+  }
+
+  if (action.type === CLOSE_MENU) {
+    return {
+      ...state,
+      menuOpened: false,
+    };
   }
 
   return state;
-}
+};
+
+//========================================================
+// actions
+// ========================================================
 
 export const increase = (value) => {
   return {
     type: INCREASE,
-    payload: value
+    payload: value,
   };
-}
+};
 
 export const decrease = (value) => {
   return {
     type: DECREASE,
-    payload: value
+    payload: value,
   };
-}
+};
 
 export const grow = () => {
   return {
-    type: GROW
+    type: GROW,
   };
-}
+};
 
 export const revert = () => {
   return {
-    type: REVERT
+    type: REVERT,
   };
-}
+};
 
-export const tallyGoalSelector = state => state.global.tallyGoal;
+export const openMenu = () => {
+  return {
+    type: OPEN_MENU,
+  };
+};
+
+export const closeMenu = () => {
+  return {
+    type: CLOSE_MENU,
+  };
+};
+
+//========================================================
+// selectors
+// ========================================================
+
+const rootSelector = (state) => state.global;
+
+export const tallyGoalSelector = createSelector(
+  rootSelector,
+  state => state.tallyGoal
+);
+
+export const menuOpenedSelector = createSelector(
+  rootSelector,
+  state => state.menuOpened
+);
 
 export default reducer;

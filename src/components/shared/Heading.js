@@ -20,6 +20,7 @@ const Heading = ({
   level = "2",
   mb = "0",
   mt = "0",
+  colorInherit = false
 }) => {
   const tag = as || `h${level}`;
 
@@ -40,7 +41,7 @@ const Heading = ({
                 margin-bottom: ${marginBottom};
                 margin-top: ${marginTop};
 
-                color: ${theme.colorLightTemp};
+                color: ${colorInherit ? 'inherit' : theme.colorLightTemp};
 
                 font-size: ${fontSize};
                 line-height: ${theme.lineHeightS};

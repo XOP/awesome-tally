@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 
 import { TallyAdd } from '../../../components/features/tally-add/TallyAdd';
-import { grow } from "../../../redux/modules/tally-global";
+import { grow, openMenu } from "../../../redux/modules/tally-global";
 
 const TallyCreateModule = () => {
   const dispatch = useDispatch();
@@ -10,8 +10,12 @@ const TallyCreateModule = () => {
     dispatch(grow());
   }
 
+  const handleMenu = () => {
+    dispatch(openMenu());
+  }
+
   return (
-    <TallyAdd onNew={handleNew} />
+    <TallyAdd onNew={handleNew} onMenu={handleMenu} />
   );
 };
 
