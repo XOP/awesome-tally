@@ -7,6 +7,7 @@ const Button = ({
   className,
   children,
   onClick,
+  disabled = false,
   type = "button",
   iconStart = null,
   iconEnd = null,
@@ -58,11 +59,13 @@ const Button = ({
         cursor: pointer;
         transition: all 0.15s;
 
-        &:hover {
-          filter: brightness(1.2);
+        @media (hover:hover) {
+          &:hover {
+            filter: brightness(1.2);
+          }
         }
-
-        &:active {
+  
+        &:active:not([disabled]) {
           filter: contrast(0.8);
           transform: translateY(1px);
         }
@@ -70,9 +73,15 @@ const Button = ({
         &:nth-of-type(n + 2) {
           margin-left: ${theme.spaceOne};
         }
+
+        &[disabled] {
+          cursor: default;
+          opacity: 0.5;
+        }
       `}
       onClick={onClick}
       type={type}
+      disabled={disabled}
     >
       {iconStart && (
         <span

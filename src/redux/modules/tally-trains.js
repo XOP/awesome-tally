@@ -11,6 +11,10 @@ const initialState = {
   newTrain: new Train(),
 };
 
+//========================================================
+// reducer
+// ========================================================
+
 const reducer = (state = initialState, action = {}) => {
   if (action.type === CREATE_TRAIN) {
     const { items, newTrain } = state;
@@ -34,6 +38,10 @@ const reducer = (state = initialState, action = {}) => {
   return state;
 };
 
+//========================================================
+// actions
+// ========================================================
+
 export const createTrain = (goal) => {
   return {
     type: CREATE_TRAIN,
@@ -50,6 +58,10 @@ export const pushItem = (value) => {
   };
 };
 
+//========================================================
+// selectors
+// ========================================================
+
 const rootSelector = (state) => state.trains;
 
 export const trainsSelector = createSelector(
@@ -60,6 +72,17 @@ export const trainsSelector = createSelector(
 export const trainItemsSelector = createSelector(
   rootSelector,
   (trains) => trains.newTrain.items
+);
+
+export const trainTotalSelector = createSelector(
+  trainItemsSelector,
+  (items) => {
+    const total = items.reduce((acc, cur) => {
+      return acc + cur.value;
+    }, 0);
+
+    return total;
+  }
 );
 
 export default reducer;

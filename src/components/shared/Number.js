@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 /** @jsxRuntime classic */
 /** @jsx jsx */
@@ -8,10 +8,13 @@ import theme from "../../theme/theme";
 const Number = ({
   className,
   children,
-  onClick,
+  onClick = () => null,
   as = "chip",
   size = "normal",
 }) => {
+  const [debounce, setDebounce] = useState(false);
+  const [debounceTimer, setDebounceTimer] = useState(false);
+
   const btn = "#5d9ec9";
 
   const hasBorder = as !== "text";
@@ -27,6 +30,24 @@ const Number = ({
   if (size === "big") {
     fontSize = theme.fontSize2xl;
   }
+
+  const handleClick = () => {
+    if (debounce) return;
+
+    onClick();
+    setDebounce(true);
+
+    const to = setTimeout(() => setDebounce(false), 250);
+    setDebounceTimer(to);
+  };
+
+  useEffect(() => {
+    if (!debounceTimer) return;
+
+    return () => {
+      clearTimeout(debounceTimer);
+    };
+  }, [debounceTimer]);
 
   return (
     <ClassNames>
@@ -58,8 +79,10 @@ const Number = ({
                 cursor: ${isClickable ? "pointer" : "default"};
                 transition: all 0.15s;
 
-                &:hover {
-                  filter: brightness(1.2);
+                @media (hover: hover) {
+                  &:hover {
+                    filter: brightness(1.2);
+                  }
                 }
 
                 &:active {
@@ -68,7 +91,7 @@ const Number = ({
                 }
               `
             ),
-            onClick,
+            onClick: handleClick,
           },
           <span>{children}</span>
         );

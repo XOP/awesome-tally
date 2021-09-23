@@ -6,7 +6,13 @@ import { Button, Icons, Panel } from "../../shared";
 
 import styles from "./TallyControls.module.css";
 
-const TallyControls = ({ onDone, onReset, onBack = () => null }) => {
+const TallyControls = ({
+  onDone,
+  onReset,
+  onBack = () => null,
+  isDoneDisabled = false,
+  isResetDisabled = false,
+}) => {
   const history = useHistory();
 
   const navigateToMain = () => history.push(routeNames.MAIN);
@@ -25,12 +31,12 @@ const TallyControls = ({ onDone, onReset, onBack = () => null }) => {
     <Panel>
       <div className={styles.container}>
         <div className={styles.control}>
-          <Button onClick={onReset} isIcon>
+          <Button onClick={onReset} isIcon disabled={isResetDisabled}>
             <Icons.RefreshCcw />
           </Button>
         </div>
         <div className={styles.control}>
-          <Button onClick={handleDone} iconStart={<Icons.Check />}>
+          <Button onClick={handleDone} iconStart={<Icons.Check />} disabled={isDoneDisabled}>
             Done
           </Button>
         </div>

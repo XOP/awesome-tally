@@ -15,7 +15,7 @@ const store = configureStore({
       {
         goal: 100,
         date: new Date(),
-        items: [{ value: 30 }, { value: 25 }, { value: 30 }, { value: 35 }],
+        items: [{ value: 30 }, { value: 15 }, { value: 10 }, { value: 35 }],
       },
       {
         goal: 105,
