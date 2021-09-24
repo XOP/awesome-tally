@@ -1,21 +1,10 @@
-import { Heading, Modal } from "../../components/shared";
+import { Heading } from "../../components/shared";
 
 import TallyCreate from "./components/tally-create";
 import TallyTrains from "./components/tally-trains";
-
-import {
-  closeMenu,
-  menuOpenedSelector,
-} from "../../redux/modules/tally-global";
-
-import { useSelector, useDispatch } from "react-redux";
+import SettingsModal from "./components/settings-modal";
 
 const MainPage = () => {
-  const dispatch = useDispatch();
-
-  const isMenuOpened = useSelector(menuOpenedSelector);
-  const handleMenuClose = () => dispatch(closeMenu());
-
   return (
     <main>
       <div>
@@ -25,10 +14,7 @@ const MainPage = () => {
         <TallyTrains />
       </div>
       <TallyCreate />
-
-      <Modal title="Well..." isOpen={isMenuOpened} onClose={handleMenuClose}>
-        Some content here
-      </Modal>
+      <SettingsModal />
     </main>
   );
 };
