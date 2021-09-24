@@ -1,6 +1,7 @@
 # Environment
 .vscode
 .idea
+.DS_Store
 
 # Logs
 logs

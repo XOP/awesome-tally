@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Passion One";
+  font-style: normal;
+  font-display: swap;
+  src: url(./assets/fonts/PassionOne-Regular.ttf) format("truetype");
+  ascent-override: 90%;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -6,6 +14,7 @@ html {
   height: 100%;
 
   font-size: 16px;
+  font-size-adjust: ex-height 0.8;
 }
 
 body {
@@ -17,8 +26,8 @@ body {
   margin: 0;
   min-height: 100%;
 
-  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Passion One", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: var(--font-size-n);
   line-height: var(--line-height-n);
   -webkit-font-smoothing: antialiased;

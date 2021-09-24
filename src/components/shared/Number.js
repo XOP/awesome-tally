@@ -73,6 +73,7 @@ const Number = ({
                 background: ${background};
                 color: ${theme.colorDarkTemp};
 
+                font-family: inherit;
                 font-size: ${fontSize};
                 line-height: ${theme.lineHeightN};
 
