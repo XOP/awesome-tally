@@ -29,6 +29,7 @@ const createStoreWithMiddleware = compose(
       namespace: KEY,
       namespaceSeparator: "/",
       debounce: 500,
+      disableWarnings: true
     })
   ),
   devTools
@@ -51,6 +52,7 @@ const configureStore = () =>
           newTrain: new Train(),
         },
       },
+      disableWarnings: true
     })
   );
 
