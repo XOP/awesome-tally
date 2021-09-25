@@ -24,7 +24,7 @@ tokens.forEach((t) => {
 });
 
 const defaultTheme = {
-  spaceEight: theme.spaceEight,
+  spaceEighth: theme.spaceEighth,
   spaceQuarter: theme.spaceQuarter,
   spaceHalf: theme.spaceHalf,
   spaceThreeQuarters: theme.spaceThreeQuarters,
@@ -46,6 +46,9 @@ const defaultTheme = {
   radiusLight: theme.radiusLight,
   radiusRegular: theme.radiusRegular,
   radiusHeavy: theme.radiusHeavy,
+  borderSizeLight: theme.borderSizeLight,
+  borderSizeRegular: theme.borderSizeRegular,
+  borderSizeHeavy: theme.borderSizeHeavy,
 
   colorDarkTemp: theme.colorDarkTemp,
   colorLightTemp: theme.colorLightTemp,

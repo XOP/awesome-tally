@@ -16,8 +16,8 @@ const TallyTrain = ({ items, goal = 0 }) => {
   const isExtra = extra !== 0;
   const isUnder = extra < 0;
 
-  let sign = isExtra ? (isUnder ? '-' : '+') : '';
-  if (sign !== '') sign += ' ';
+  let sign = isExtra ? (isUnder ? "-" : "+") : "";
+  if (sign !== "") sign += " ";
   extra = Math.abs(extra);
 
   const showExtras = goal > 0;
@@ -60,7 +60,7 @@ const TallyTrain = ({ items, goal = 0 }) => {
         </div>
       </Card>
       {showExtras && isExtra && (
-        <Card className={styles.extra} padding="0.25">
+        <Card className={styles.extra} padding="0.25" align="right">
           {`${sign}${extra}`}
         </Card>
       )}

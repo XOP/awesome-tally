@@ -17,7 +17,7 @@ const Card = ({ className, children, align = "left", padding = '2' }) => {
         font-size: ${theme.fontSizeN};
         border-radius: ${theme.radiusHeavy};
         box-shadow: 0 2px 7px -2px rgba(0, 0, 0, 0.6);
-        border: 1px solid ${theme.colorDarkTemp};
+        border: ${theme.borderSizeRegular} solid ${theme.colorDarkTemp};
 
         & + & {
           margin-top: ${theme.spaceOne};

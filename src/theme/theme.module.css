@@ -25,6 +25,10 @@
     --radius-regular: 0.25rem;
     --radius-heavy: 0.5rem;
 
+    --border-size-light: 1px;
+    --border-size-regular: 2px;
+    --border-size-heavy: 4px;
+
     --color-dark-temp: #3d3d3d;
     --color-light-temp: #e7e7e7;
   }

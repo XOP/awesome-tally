@@ -66,7 +66,7 @@ const Number = ({
                 );
                 padding: ${theme.spaceHalf} ${theme.spaceOne};
 
-                border: 1px solid
+                border: ${theme.borderSizeRegular} solid
                   ${hasBorder ? theme.colorDarkTemp : "transparent"};
                 border-radius: ${theme.radiusRegular};
 

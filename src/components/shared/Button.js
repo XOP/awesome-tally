@@ -46,7 +46,7 @@ const Button = ({
         );
         padding: ${paddingY} ${paddingX};
 
-        border: 1px solid ${theme.colorLightTemp};
+        border: ${theme.borderSizeRegular} solid ${theme.colorDarkTemp};
         border-radius: ${theme.radiusRegular};
 
         background: ${btn};
