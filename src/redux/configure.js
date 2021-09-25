@@ -19,20 +19,22 @@ export const presetStore = {
   },
 };
 
-const devTools =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const composeEnhancers = (
+  process.env.NODE_ENV !== "production" &&
+    typeof window !== "undefined" &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+) || compose;
 
-const createStoreWithMiddleware = compose(
+const createStoreWithMiddleware = composeEnhancers(
   applyMiddleware(
     save({
       states: ["global", "trains"],
       namespace: KEY,
       namespaceSeparator: "/",
       debounce: 500,
-      disableWarnings: true
+      disableWarnings: true,
     })
-  ),
-  devTools
+  )
 )(createStore);
 
 const configureStore = () =>
@@ -52,7 +54,7 @@ const configureStore = () =>
           newTrain: new Train(),
         },
       },
-      disableWarnings: true
+      disableWarnings: true,
     })
   );
 
