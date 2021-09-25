@@ -15,15 +15,13 @@ const Number = ({
   const [debounce, setDebounce] = useState(false);
   const [debounceTimer, setDebounceTimer] = useState(false);
 
-  const btn = "#5d9ec9";
-
   const hasBorder = as !== "text";
   const isClickable = as === "button";
 
   let background = "transparent";
 
   if (as === "chip") background = theme.colorLightTemp;
-  if (as === "button") background = btn;
+  if (as === "button") background = theme.colorThemeTemp;
 
   let fontSize = theme.fontSizeL;
 

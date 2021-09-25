@@ -14,8 +14,6 @@ const Button = ({
   size = "regular",
   isIcon = false
 }) => {
-  const btn = "#5d9ec9";
-
   let paddingY = theme.spaceOne;
   let paddingX = theme.spaceOneAndHalf;
   let fontSize = theme.fontSizeN;
@@ -49,7 +47,7 @@ const Button = ({
         border: ${theme.borderSizeRegular} solid ${theme.colorDarkTemp};
         border-radius: ${theme.radiusRegular};
 
-        background: ${btn};
+        background: ${theme.colorThemeTemp};
         color: ${theme.colorDarkTemp};
 
         text-transform: uppercase;

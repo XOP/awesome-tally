@@ -13,8 +13,6 @@ const Switch = ({
   checked = false,
   onChange = () => null,
 }) => {
-  const btn = "#5d9ec9";
-
   const _id = useRef(nanoid());
 
   const [isChecked, setIsChecked] = useState(checked);
@@ -42,7 +40,7 @@ const Switch = ({
         border: ${theme.borderSizeLight} solid ${theme.colorDarkTemp};
         border-radius: ${theme.spaceOne};
 
-        background: ${isChecked ? btn : theme.colorLightTemp};
+        background: ${isChecked ? theme.colorThemeTemp : theme.colorLightTemp};
         color: ${theme.colorDarkTemp};
 
         cursor: pointer;

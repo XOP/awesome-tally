@@ -3,46 +3,9 @@ import { BrowserRouter } from "react-router-dom";
 
 import AppRouter from "./routes/AppRouter";
 import configureStore from "./redux/configure";
+import initStore from "./redux/initStore";
 
-const store = configureStore({
-  global: {
-    tallyGoal: 100,
-    tallyGoalPrev: 100,
-    tallyIncrement: 5,
-    growEnabled: true,
-  },
-  trains: {
-    items: [
-      {
-        goal: 100,
-        date: new Date(),
-        items: [{ value: 30 }, { value: 15 }, { value: 10 }, { value: 35 }],
-      },
-      {
-        goal: 105,
-        date: new Date(),
-        items: [
-          { value: 35 },
-          { value: 30 },
-          { value: 30 },
-          { value: 15 },
-          { value: 15 },
-        ],
-      },
-      {
-        goal: 120,
-        date: new Date(),
-        items: [
-          { value: 35 },
-          { value: 30 },
-          { value: 30 },
-          { value: 15 },
-          { value: 15 },
-        ],
-      },
-    ],
-  },
-});
+const store = configureStore(initStore());
 
 function App() {
   return (

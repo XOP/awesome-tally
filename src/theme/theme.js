@@ -50,6 +50,7 @@ const defaultTheme = {
   borderSizeRegular: theme.borderSizeRegular,
   borderSizeHeavy: theme.borderSizeHeavy,
 
+  colorThemeTemp: theme.colorThemeTemp,
   colorDarkTemp: theme.colorDarkTemp,
   colorLightTemp: theme.colorLightTemp,
 };
