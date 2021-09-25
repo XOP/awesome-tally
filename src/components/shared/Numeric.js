@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 /** @jsxRuntime classic */
 /** @jsx jsx */
@@ -17,15 +17,9 @@ const Numeric = ({
   min = 0,
   max = 99
 }) => {
-  const btn = "#5d9ec9";
-
   const [value, setValue] = useState(_value);
 
   const minMax = (val) => Math.min(Math.max(val, min), max);
-
-  const handleChange = () => {
-    onChange(_value);
-  };
 
   const onIncrement = () => {
     const newVal = minMax(value + 1);
@@ -38,6 +32,10 @@ const Numeric = ({
 
     setValue(newVal);
   }
+
+  useEffect(() => {
+    onChange(value);
+  }, [value, onChange])
 
   return (
     <div

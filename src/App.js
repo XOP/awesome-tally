@@ -8,7 +8,8 @@ const store = configureStore({
   global: {
     tallyGoal: 100,
     tallyGoalPrev: 100,
-    tallyIncrement: 1,
+    tallyIncrement: 5,
+    growEnabled: true,
   },
   trains: {
     items: [

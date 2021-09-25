@@ -5,6 +5,9 @@ const DECREASE_GOAL = "tally/global/DECREASE_GOAL";
 const GROW_GOAL = "tally/global/GROW_GOAL";
 const REVERT_GOAL = "tally/global/REVERT_GOAL";
 
+const SET_INCREMENT = "tally/global/SET_INCREMENT";
+const TOGGLE_GROW = "tally/global/TOGGLE_GROW";
+
 const OPEN_MENU = "tally/global/OPEN_MENU";
 const CLOSE_MENU = "tally/global/CLOSE_MENU";
 
@@ -12,6 +15,7 @@ const initialState = {
   tallyGoal: 0,
   tallyGoalPrev: 0,
   tallyIncrement: 0,
+  growEnabled: true,
   menuOpened: false,
 };
 
@@ -39,7 +43,9 @@ const reducer = (state = initialState, action = {}) => {
   }
 
   if (action.type === GROW_GOAL) {
-    const { tallyGoal: goal, tallyIncrement: bump } = state;
+    const { tallyGoal: goal, tallyIncrement: bump, growEnabled } = state;
+
+    if (!growEnabled) return state;
 
     return {
       ...state,
@@ -54,6 +60,22 @@ const reducer = (state = initialState, action = {}) => {
     return {
       ...state,
       tallyGoal: prev,
+    };
+  }
+
+  if (action.type === SET_INCREMENT) {
+    return {
+      ...state,
+      tallyIncrement: action.payload,
+    };
+  }
+
+  if (action.type === TOGGLE_GROW) {
+    const { growEnabled } = state;
+
+    return {
+      ...state,
+      growEnabled: !growEnabled,
     };
   }
 
@@ -104,6 +126,19 @@ export const revertGoal = () => {
   };
 };
 
+export const setIncrement = (value) => {
+  return {
+    type: SET_INCREMENT,
+    payload: value,
+  };
+};
+
+export const toggleGrow = () => {
+  return {
+    type: TOGGLE_GROW,
+  };
+};
+
 export const openMenu = () => {
   return {
     type: OPEN_MENU,
@@ -125,6 +160,16 @@ const rootSelector = (state) => state.global;
 export const tallyGoalSelector = createSelector(
   rootSelector,
   (state) => state.tallyGoal
+);
+
+export const tallyIncrementSelector = createSelector(
+  rootSelector,
+  (state) => state.tallyIncrement
+);
+
+export const growEnabledSelector = createSelector(
+  rootSelector,
+  (state) => state.growEnabled
 );
 
 export const menuOpenedSelector = createSelector(
