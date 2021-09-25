@@ -12,6 +12,7 @@ export const presetStore = {
     tallyGoal: 100,
     tallyGoalPrev: 100,
     tallyIncrement: 1,
+    tallyValue: 25,
     growEnabled: true,
   },
   trains: {

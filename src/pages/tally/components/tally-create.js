@@ -4,13 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { TallyCounter } from "../../../components/features/tally-counter/TallyCounter";
 import { TallyTrain } from "../../../components/features/tally-train/TallyTrain";
 
+import { tallyValueSelector } from "../../../redux/modules/tally-global";
+
 import {
   pushItem,
   trainItemsSelector,
 } from "../../../redux/modules/tally-trains";
 
 const TallyCreateModule = () => {
-  const [tallyValue, setTallyValue] = useState(25);
+  const tallyValueInit = useSelector(tallyValueSelector);
+  const [tallyValue, setTallyValue] = useState(tallyValueInit);
 
   const handleIncrease = () => setTallyValue(tallyValue + 1);
   const handleDecrease = () => setTallyValue(tallyValue - 1);

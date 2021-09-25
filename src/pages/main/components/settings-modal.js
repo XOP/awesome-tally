@@ -8,14 +8,17 @@ import { SettingButton } from "../../../components/features/setting-button/Setti
 import {
   closeMenu,
   setIncrement,
+  setTallyValue,
   toggleGrow,
   menuOpenedSelector,
   tallyIncrementSelector,
+  tallyValueSelector,
   growEnabledSelector,
 } from "../../../redux/modules/tally-global";
 
 import {
-  resetTrainItems
+  resetTrainItems,
+  trainsSelector,
 } from "../../../redux/modules/tally-trains";
 
 const SettingsModalModule = () => {
@@ -34,15 +37,22 @@ const SettingsModalModule = () => {
     dispatch(setIncrement(val));
   };
 
+  const tallyValue = useSelector(tallyValueSelector);
+  const handleTallyValue = (val) => {
+    dispatch(setTallyValue(val));
+  };
+
   const handleTrainsReset = () => {
     dispatch(resetTrainItems());
   };
+
+  const hasItems = !!useSelector(trainsSelector).length;
 
   return (
     <Modal title="Settings" isOpen={isMenuOpened} onClose={handleMenuClose}>
       <Space size="1" />
       <Heading level="4" colorInherit align="left">
-        Tally grow
+        Tally
       </Heading>
       <SettingSwitch onChange={handleGrowEnabled} checked={isGrowEnabled}>
         Grow enabled
@@ -50,14 +60,21 @@ const SettingsModalModule = () => {
       <SettingNumeric onChange={handleGrowValue} value={growValue}>
         Grow amount
       </SettingNumeric>
+      <SettingNumeric onChange={handleTallyValue} value={tallyValue}>
+        Item default
+      </SettingNumeric>
 
-      <Space size="1" />
-      <Heading level="4" colorInherit align="left">
-        Danger zone
-      </Heading>
-      <SettingButton onClick={handleTrainsReset} buttonLabel='I am sure'>
-        Reset history
-      </SettingButton>
+      {hasItems && (
+        <>
+          <Space size="1" />
+          <Heading level="4" colorInherit align="left">
+            Danger zone
+          </Heading>
+          <SettingButton onClick={handleTrainsReset} buttonLabel="I am sure">
+            Reset history
+          </SettingButton>
+        </>
+      )}
     </Modal>
   );
 };

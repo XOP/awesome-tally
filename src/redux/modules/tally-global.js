@@ -5,6 +5,7 @@ const DECREASE_GOAL = "tally/global/DECREASE_GOAL";
 const GROW_GOAL = "tally/global/GROW_GOAL";
 const REVERT_GOAL = "tally/global/REVERT_GOAL";
 
+const SET_TALLY_VALUE = "tally/global/SET_TALLY_VALUE";
 const SET_INCREMENT = "tally/global/SET_INCREMENT";
 const TOGGLE_GROW = "tally/global/TOGGLE_GROW";
 
@@ -15,6 +16,7 @@ const initialState = {
   tallyGoal: 0,
   tallyGoalPrev: 0,
   tallyIncrement: 0,
+  tallyValue: 0,
   growEnabled: true,
   menuOpened: false,
 };
@@ -67,6 +69,13 @@ const reducer = (state = initialState, action = {}) => {
     return {
       ...state,
       tallyIncrement: action.payload,
+    };
+  }
+
+  if (action.type === SET_TALLY_VALUE) {
+    return {
+      ...state,
+      tallyValue: action.payload,
     };
   }
 
@@ -133,6 +142,13 @@ export const setIncrement = (value) => {
   };
 };
 
+export const setTallyValue = (value) => {
+  return {
+    type: SET_TALLY_VALUE,
+    payload: value,
+  };
+};
+
 export const toggleGrow = () => {
   return {
     type: TOGGLE_GROW,
@@ -165,6 +181,11 @@ export const tallyGoalSelector = createSelector(
 export const tallyIncrementSelector = createSelector(
   rootSelector,
   (state) => state.tallyIncrement
+);
+
+export const tallyValueSelector = createSelector(
+  rootSelector,
+  (state) => state.tallyValue
 );
 
 export const growEnabledSelector = createSelector(
