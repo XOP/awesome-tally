@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
 
-  margin: var(--space-one) 0;
+  margin: var(--space-one-and-half) 0;
 }
     
 .label {

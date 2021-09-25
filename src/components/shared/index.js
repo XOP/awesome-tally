@@ -7,3 +7,4 @@ export { Panel } from './Panel';
 export { Modal } from './Modal';
 export { Switch } from './Switch';
 export { Numeric } from './Numeric';
+export { Space } from './Space';

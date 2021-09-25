@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { Modal } from "../../../components/shared";
+import { Heading, Modal, Space } from "../../../components/shared";
 import { SettingSwitch } from "../../../components/features/setting-switch/SettingSwitch";
 import { SettingNumeric } from "../../../components/features/setting-numeric/SettingNumeric";
 
-import { closeMenu, menuOpenedSelector } from "../../../redux/modules/tally-global";
+import {
+  closeMenu,
+  menuOpenedSelector,
+} from "../../../redux/modules/tally-global";
 
 const SettingsModalModule = () => {
   const dispatch = useDispatch();
@@ -14,6 +17,10 @@ const SettingsModalModule = () => {
 
   return (
     <Modal title="Settings" isOpen={isMenuOpened} onClose={handleMenuClose}>
+      <Space size="1" />
+      <Heading level="4" colorInherit align="left">
+        Tally grow
+      </Heading>
       <SettingSwitch>Fancy setting</SettingSwitch>
       <SettingNumeric>Numeric setting</SettingNumeric>
     </Modal>
