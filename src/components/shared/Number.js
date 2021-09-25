@@ -59,6 +59,7 @@ const Number = ({
                 display: inline-flex;
                 justify-content: center;
 
+                min-width: calc(${theme.spaceOne} * 2 + 2.5ch);
                 height: calc(
                   ${theme.spaceHalf} * 2 + ${fontSize} * ${theme.lineHeightN}
                 );

@@ -1,32 +1,26 @@
-const presetStore = {
-  global: {
-    tallyGoal: 100,
-    tallyGoalPrev: 100,
-    tallyIncrement: 1,
-    growEnabled: true,
-  },
-  trains: {
-    items: [],
-  },
-};
+import compareVersions from "compare-versions";
+import storage from "store2";
 
-export default function initStore() {
-  const newVersion = process.env.REACT_APP_VERSION || 1;
+import { KEY as appKey } from "./configure";
 
-  let savedStore = localStorage.getItem("awesomeTally");
+const KEY = `${appKey}/misc`;
 
-  if (savedStore) {
-    savedStore = JSON.parse(savedStore);
+export default function initVersion() {
+  const newVersion = process.env.REACT_APP_VERSION || "0.0.1";
 
-    return savedStore.store;
+  if (storage.has(KEY)) {
+    const store = storage.get(KEY);
+    const { version } = store;
+
+    if (compareVersions(newVersion, version) === 1) {
+      storage.set(KEY, {
+        ...store,
+        version: newVersion,
+      });
+    }
   } else {
-    const data = JSON.stringify({
-      version: newVersion,
-      store: presetStore,
+    storage.set(KEY, {
+      version: newVersion
     });
-
-    localStorage.setItem("awesomeTally", data);
-
-    return presetStore;
   }
 }

@@ -2,10 +2,13 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 import AppRouter from "./routes/AppRouter";
-import configureStore from "./redux/configure";
-import initStore from "./redux/initStore";
 
-const store = configureStore(initStore());
+import initStore from './redux/initStore';
+import configureStore from "./redux/configure";
+
+initStore();
+
+const store = configureStore();
 
 function App() {
   return (
