@@ -10,6 +10,7 @@ const MAP_HEADING_FONTSIZE = {
   2: theme.fontSize3xl,
   3: theme.fontSize2xl,
   4: theme.fontSizeXl,
+  5: theme.fontSizeL,
 };
 
 const Heading = ({
@@ -47,6 +48,7 @@ const Heading = ({
                 line-height: ${theme.lineHeightS};
                 text-transform: uppercase;
                 text-align: ${align};
+                text-shadow: 0 .05em 0.05em ${theme.colorThemeTemp};
               `
             ),
           },

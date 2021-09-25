@@ -7,7 +7,7 @@ import styles from "./TallyCounter.module.css";
 const TallyCounter = ({ onMinusClick, onPlusClick, onNumberClick, value }) => {
   return (
     <div className={styles.root}>
-      <Card padding="2">
+      <Card padding="1">
         <div className={styles.container}>
           <div className={styles.minus}>
             <Button onClick={onMinusClick} isIcon>
@@ -16,9 +16,15 @@ const TallyCounter = ({ onMinusClick, onPlusClick, onNumberClick, value }) => {
           </div>
 
           <div className={styles.number}>
-            <Number as="button" onClick={onNumberClick} size="big">
-              {value}
-            </Number>
+            {onNumberClick === null ? (
+              <Number as="chip" size="big">
+                {value}
+              </Number>
+            ) : (
+              <Number as="button" onClick={onNumberClick} size="big">
+                {value}
+              </Number>
+            )}
           </div>
 
           <div className={styles.plus}>

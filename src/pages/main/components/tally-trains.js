@@ -1,20 +1,37 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
+import { Heading, Space } from "../../../components/shared";
 import { TallyTrain } from "../../../components/features/tally-train/TallyTrain";
-import { Heading } from "../../../components/shared";
+import { TallyCounter } from "../../../components/features/tally-counter/TallyCounter";
 
+import { tallyGoalSelector, increaseGoal, decreaseGoal } from "../../../redux/modules/tally-global";
 import { trainsSelector } from "../../../redux/modules/tally-trains";
 
 const TallyTrainsModule = () => {
   const items = useSelector(trainsSelector);
+  const goal = useSelector(tallyGoalSelector);
+
+  const dispatch = useDispatch();
+
+  const handleGoalIncrease = () => dispatch(increaseGoal(1));
+  const handleGoalDecrease = () => dispatch(decreaseGoal(1));
 
   if (!items.length) {
     return (
-      <Heading level='4'>
-        No records yet... <br/>
-        time to shine!
-      </Heading>
-    )
+      <div>
+        <Heading level="4">No records yet...</Heading>
+        <Space size="1" />
+        <Heading level="5">Set the goal to get started</Heading>
+        <Space size="1" />
+
+        <TallyCounter
+          value={goal}
+          onMinusClick={handleGoalDecrease}
+          onPlusClick={handleGoalIncrease}
+          onNumberClick={null}
+        />
+      </div>
+    );
   }
 
   return (

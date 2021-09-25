@@ -86,8 +86,8 @@ const Number = ({
                 }
 
                 &:active {
-                  filter: contrast(0.8);
-                  transform: translateY(1px);
+                  filter: ${isClickable ? "contrast(0.8)" : ""};
+                  transform: ${isClickable ? "translateY(1px)" : ""}';
                 }
               `
             ),

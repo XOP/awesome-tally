@@ -6,6 +6,7 @@ import { TrainItem } from "../models/tally-item-model";
 const CREATE_TRAIN = "tally/trains/CREATE_TRAIN";
 const RESET_TRAIN = "tally/trains/RESET_TRAIN";
 const PUSH_ITEM = "tally/trains/PUSH_ITEM";
+const RESET_TRAIN_ITEMS = "tally/trains/RESET_TRAIN_ITEMS";
 
 const initialState = {
   items: [],
@@ -29,6 +30,13 @@ const reducer = (state = initialState, action = {}) => {
   if (action.type === RESET_TRAIN) {
     return {
       ...state,
+      newTrain: new Train(),
+    };
+  }
+
+  if (action.type === RESET_TRAIN_ITEMS) {
+    return {
+      items: [],
       newTrain: new Train(),
     };
   }
@@ -62,6 +70,12 @@ export const createTrain = (goal) => {
 export const resetTrain = () => {
   return {
     type: RESET_TRAIN,
+  };
+};
+
+export const resetTrainItems = () => {
+  return {
+    type: RESET_TRAIN_ITEMS,
   };
 };
 
