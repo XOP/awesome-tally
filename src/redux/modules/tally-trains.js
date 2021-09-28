@@ -1,4 +1,5 @@
 import { createSelector } from "reselect";
+import { original, produce } from "immer";
 
 import { Train } from "../models/tally-train-model";
 import { TrainItem } from "../models/tally-item-model";
@@ -17,21 +18,18 @@ const initialState = {
 // reducer
 // ========================================================
 
-const reducer = (state = initialState, action = {}) => {
+const reducer = produce((draft, action = {}) => {
   if (action.type === CREATE_TRAIN) {
-    const { items, newTrain } = state;
+      const { newTrain } = draft;
+      const item = { ...newTrain, goal: action.payload.goal };
 
-    return {
-      items: [{ ...newTrain, goal: action.payload.goal }, ...items],
-      newTrain: new Train(),
-    };
+      draft.items.unshift(item);
+      draft.newTrain = new Train();
+      return;
   }
 
   if (action.type === RESET_TRAIN) {
-    return {
-      ...state,
-      newTrain: new Train(),
-    };
+    draft.newTrain = new Train();
   }
 
   if (action.type === RESET_TRAIN_ITEMS) {
@@ -42,7 +40,7 @@ const reducer = (state = initialState, action = {}) => {
   }
 
   if (action.type === PUSH_ITEM) {
-    const { items, newTrain } = state;
+    const { items, newTrain } = draft;
     const { items: trainItems } = newTrain;
 
     return {
@@ -51,8 +49,8 @@ const reducer = (state = initialState, action = {}) => {
     };
   }
 
-  return state;
-};
+  return draft;
+}, initialState);
 
 //========================================================
 // actions
